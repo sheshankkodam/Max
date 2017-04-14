@@ -1,0 +1,48 @@
+prod: &PROD
+  Server:
+    Host: "0.0.0.0"
+    Port: 5000
+
+  Database:
+    Host: "mongodb://localhost:27017/"
+    DbName: "channels"
+    Collection: "gn"
+    roviCollection: "rovi"
+
+  ApiPagination:
+    startIndex: 0
+    pageSize: 5000
+
+  hoursUntilDelta: 24
+  daysBeforeUnavailable: 1
+
+  normandySourcesUrl: "http://localhost:9100/api/v1/sources"
+
+  timeformat: '%Y-%m-%dT%H:%M:%S.%fZ'
+
+dev:
+    <<: *PROD
+
+test:
+    <<: *PROD
+    Database:
+      Host: "mongodb://localhost:27017/"
+      DbName: "channels_test"
+      Collection: "gn"
+      roviCollection: "rovi"
+
+    normandySourcesUrl: "tests/features/steps/resources/mock_normandy_sources_api.json"
+
+scqa:
+  <<: *PROD
+  Server:
+    Host: "0.0.0.0"
+    Port: 5001
+
+  Database:
+    Host: "mongodb://localhost:27018/"
+    DbName: "channels"
+    Collection: "gn"
+    roviCollection: "rovi"
+
+  normandySourcesUrl: "http://mul-imssked01:9100/api/v1/sources"

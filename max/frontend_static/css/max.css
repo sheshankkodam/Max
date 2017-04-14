@@ -1,0 +1,22 @@
+body {
+    background: url("../images/8V7A4659.jpg") center center;
+}
+
+.container {
+    width: 90%;
+}
+
+.navbar {
+    min-height: 70px;
+    margin-bottom: 30px;
+}
+
+.navbar-default {
+    background: #020c20 no-repeat;
+    background-size: 100% 720px;
+
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
