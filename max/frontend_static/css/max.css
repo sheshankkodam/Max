@@ -20,7 +20,7 @@ body {
     margin-bottom: 30px;
 }
 
-input[type="text"], input[type="dob"] {
+input[type="text"], input[type="date"] {
     height: 45px;
     width: 300px;
     font-size: 18px;
