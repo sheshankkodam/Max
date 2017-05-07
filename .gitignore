@@ -88,4 +88,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
-idea/
+idea/modules.xml
+idea/misc.xml
+idea/jsLibraryMappings.xml
+idea/Max.iml
+idea/workspace.iml
