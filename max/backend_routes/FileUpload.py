@@ -8,10 +8,9 @@ class FileUpload(Resource):
     def __init__(self):
         self.__HEADERS = {'Cache-Control': 'private, max-age=0, no-cache', 'Content-type': 'application/json'}
 
-    def post(self):
-        parser = reqparse.RequestParser()
-        args = parser.parse_args()
-        f = request.files['file']
-        f.save(join('/Users/sheshank.kodam/Desktop', secure_filename(f.filename)))
+    def get(self):
         return 'file uploaded successfully'
+
+    def post(self):
+        return 'file uploaded successfully1'
 
