@@ -28,11 +28,15 @@ $(document).ready(function () {
 
     function saveImage(input) {
         console.log("Saving image");
+        var frm = new FormData();
+        frm.append('imageInput', input.files[0]);
         $.ajax({
-            url: '/upload',
             type: 'POST',
-            contentType: 'application/json',
-            data: "steve",
+            url: '/upload',
+            data: frm,
+            contentType: false,
+            cache: false,
+            processData: false,
             success: function (result) {
                console.log(result);
             },
