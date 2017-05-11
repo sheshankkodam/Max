@@ -2,27 +2,45 @@
  * Created by sheshank.kodam on 4/15/17.
  */
 $(document).ready(function () {
-    // load default data on page load
     console.log("Hello max");
 
-    $(".upload_image").click(function(){
-        console.log("clicked on image")
-        $('#imgupload').trigger('click');
+    $(".default_image").click(function(){
+        console.log("Clicked on image");
+        $('#uploaded_file').trigger('click');
     });
 
-    $("#imgupload").change(function(){
-        console.log("get image here")
-        readURL(this);
+    $("#uploaded_file").change(function(){
+        console.log("File upload received");
+        previewImage(this);
+        saveImage(this);
     });
 
-    function readURL(input) {
-        console.log(input.files[0])
+    function previewImage(input) {
+        console.log("Previewing image");
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('.upload_image').attr('src', e.target.result);
+                $('.default_image').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
+    }
+
+    function saveImage(input) {
+        console.log("Saving image");
+        var frm = new FormData();
+        frm.append('imageInput', input.files[0]);
+        $.ajax({
+            url: '/upload',
+            type: 'POST',
+            contentType: 'application/json',
+            data: frm,
+            success: function (result) {
+               console.log(result);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
     }
 });
